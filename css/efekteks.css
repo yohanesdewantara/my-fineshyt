@@ -49,7 +49,3 @@
     display: inline-block;
     line-height: 1em;
 }
-
-.ml1 { font-size: clamp(1rem, 4.2vw, 1.4rem); }
-.ml2 { font-size: clamp(0.9rem, 3.8vw, 1.2rem); }
-.ml1 .line { height: 2px; }

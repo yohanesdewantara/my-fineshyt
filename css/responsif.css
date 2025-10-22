@@ -1,18 +1,12 @@
-/* HP kecil s.d. tablet */
-@media (max-width: 640px) {
-  .ml1 { margin-top: 18%; }
 
-  .kontener2 {
-    margin-top: 38%;
-    padding: 12px;
-  }
+@media (min-width: 300px) and (max-width: 640px) {
+    .ml1 {
+        margin-top: 45%;
+    }
 
-  .tombol_menu {
-    top: 4px; left: 4px;
-  }
-
-  .dalemnya_kontener { 
-    border-radius: 12px;
-    padding-bottom: 12px;
-  }
+    .kontener2 {
+        padding: 10px;
+        text-align: center;
+        margin-top: 60%;
+    }
 }

@@ -1,17 +1,95 @@
-/*Author    : Wafa Rifqi Anafin*/
-/*Github    : https://github.com/wafarifki*/
-/*Facebook  : https://facebook.com/wafarifkianafin*/
-/*Instagram : https://instagram.com/wafarifki_*/
-/*Website   : https://wafarifki.tk*/
+/* --- PHONE (≤640px) --- */
+@media (max-width: 640px) {
+  /* boleh scroll di mobile, biar konten gak kepotong */
+  html, body {
+    height: 100dvh;          /* viewport dinamis, aman di mobile */
+    overflow-y: auto;        /* aktifkan scroll */
+  }
 
-@media (min-width: 300px) and (max-width: 640px) {
-    .ml1 {
-        margin-top: 45%;
-    }
+  /* landing awal */
+  .kontener2 {
+    padding: 12px;
+    text-align: center;
+    margin-top: 35vh;        /* center lebih stabil di HP */
+  }
+  .kontener2 h1 { font-size: clamp(1.1rem, 6vw, 1.6rem); }
+  .kontener2 .tombol { font-size: 0.95rem; }
 
-    .kontener2 {
-        padding: 10px;
-        text-align: center;
-        margin-top: 60%;
-    }
+  /* container utama */
+  .kontener {
+    padding: 12px;
+    height: auto;
+  }
+
+  .dalemnya_kontener {
+    /* tinggi menyesuaikan layar HP, tapi bisa di-scroll kalau konten lebih panjang */
+    height: calc(100dvh - 24px);
+    min-height: 520px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 12px;
+    border-radius: 12px;
+  }
+
+  /* setiap "halaman" tetap bisa animasi, tapi kontennya fleksibel */
+  .dalemnya_halaman {
+    position: relative;               /* biar konten bisa tinggi alami */
+    height: auto;
+    min-height: calc(100dvh - 140px); /* cukup ruang di bawah judul/menu */
+    padding: 12px;
+  }
+
+  .judul_halaman {
+    font-size: clamp(1.1rem, 4.5vw, 1.4rem);
+    line-height: 56px;
+  }
+
+  /* gambar responsif */
+  section .gambar {
+    display: block;
+    width: 92%;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 10px; /* mempertahankan style asal */
+  }
+
+  /* tombol menu kiri-atas tetap proporsional & mudah di-tap */
+  .tombol_menu {
+    height: 56px;
+    width: 48px;
+    background-size: 36px;
+  }
+
+  /* teks animasi (efekteks.css) responsif */
+  .ml1 {
+    margin-top: 15%;
+    font-size: clamp(1rem, 5.2vw, 1.4em);
+  }
+  .ml2 {
+    font-size: clamp(0.9rem, 4.8vw, 1.2em);
+  }
+}
+
+/* --- TABLET (641–1024px) --- */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .dalemnya_kontener {
+    height: calc(100dvh - 28px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .dalemnya_halaman {
+    position: relative;
+    min-height: calc(100dvh - 150px);
+    padding: 16px;
+  }
+  .judul_halaman {
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
+    line-height: 60px;
+  }
+  section .gambar {
+    width: 88%;
+    max-width: 680px;
+    height: auto;
+  }
 }

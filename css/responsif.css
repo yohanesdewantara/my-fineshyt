@@ -1,83 +1,50 @@
-/* ===== PHONE (≤640px) — tetap alur & animasi seperti PC ===== */
-@media (max-width: 640px) {
-  /* Viewport dinamis, tanpa scroll agar animasi/translate tetap mulus */
-  html, body {
-    height: 100dvh;
-    overflow: hidden;                  /* penting: sama seperti desktop */
-  }
+/* === Anti-clip gambar di semua device (termasuk Windows/desktop) === */
+/* letakkan di paling bawah responsif.css */
 
-  /* Splash (kontener2) tetap center */
-  .kontener2 {
-    padding: 12px;
-    text-align: center;
-    margin-top: calc(50dvh - 64px);    /* center-ish di layar HP */
-  }
-  .kontener2 h1 { font-size: clamp(1.1rem, 6vw, 1.6rem); }
-  .kontener2 .tombol { font-size: 0.95rem; }
+section .gambar {
+  display: block;
+  margin: 0 auto;
+  width: min(92%, 900px);          /* lebar responsif tanpa mengubah look */
+  height: auto;                    /* biar tidak memaksa tinggi tetap */
+  max-height: calc(100dvh - 220px);/* muat layar: sisakan ruang judul + jarak */
+  object-fit: contain;             /* jangan crop: seluruh gambar terlihat */
+}
 
-  /* Kontainer utama full-viewport, tanpa scroll */
-  .kontener {
-    padding: 12px;
-    height: 100dvh;
-  }
-
-  /* Panel dalam mengikuti tinggi layar (kurangi padding luar) */
-  .dalemnya_kontener {
-    height: calc(100dvh - 24px);       /* 24px = padding atas+pinggir */
-    overflow: hidden;                  /* jaga alur animasi section */
-    padding-bottom: 0;
-    border-radius: 12px;
-  }
-
-  /* Penting: tetap absolute & full area seperti desktop */
+/* Desktop/laptop (layar besar): longgarkan batas sedikit */
+@media (min-width: 1025px) {
   .dalemnya_halaman {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;                      /* penuhi viewport panel */
-    -webkit-transition: -webkit-transform 0.3s; /* sama seperti PC */
-    padding: 10px 12px;
+    /* bantu layout agar gambar & teks tersusun kolom, tanpa mengubah animasi */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 12px;
+    padding-right: 12px;
   }
 
-  /* Judul proporsional, line-height tetap ramping */
-  .judul_halaman {
-    font-size: clamp(1.1rem, 4.5vw, 1.4rem);
-    line-height: 56px;
+  .judul_halaman { 
+    /* pastikan judul tidak menekan gambar */
+    flex: 0 0 auto; 
   }
 
-  /* Tombol menu mudah ditap, tetap di kiri-atas */
-  .tombol_menu {
-    height: 56px;
-    width: 48px;
-    background-size: 36px;             /* tetap icon yang sama */
-  }
-
-  /* Gambar responsif tapi tidak mengubah gaya */
   section .gambar {
-    display: block;
-    width: 92%;
-    max-width: 100%;
-    height: auto;
-    margin: 0 auto;
-    border-radius: 10px;
-  }
-
-  /* Teks efek (efekteks.css) responsif tanpa ubah look */
-  .ml1 {
-    margin-top: 15%;
-    font-size: clamp(1rem, 5.2vw, 1.4em);
-  }
-  .ml2 {
-    font-size: clamp(0.9rem, 4.8vw, 1.2em);
+    width: min(88%, 860px);
+    max-height: calc(100dvh - 200px); /* sedikit lebih lega di desktop */
   }
 }
 
-/* ===== TABLET (641–1024px) — tetap alur desktop, ukuran disesuaikan ===== */
+/* Tablet: kompromi antara HP & desktop */
 @media (min-width: 641px) and (max-width: 1024px) {
-  html, body { height: 100dvh; overflow: hidden; }
-  .kontener { height: 100dvh; padding: 16px; }
-  .dalemnya_kontener { height: calc(100dvh - 32px); overflow: hidden; }
-  .dalemnya_halaman { position: absolute; height: 100%; padding: 14px 16px; }
-  .judul_halaman { font-size: clamp(1.2rem, 3vw, 1.6rem); line-height: 60px; }
-  section .gambar { width: 88%; max-width: 680px; height: auto; }
+  section .gambar {
+    width: min(90%, 780px);
+    max-height: calc(100dvh - 210px);
+  }
+}
+
+/* Phone: tetap responsif, aman dari terpotong */
+@media (max-width: 640px) {
+  section .gambar {
+    width: 92%;
+    max-height: calc(100dvh - 190px);
+  }
 }

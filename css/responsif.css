@@ -1,67 +1,68 @@
-/* --- PHONE (≤640px) --- */
+/* ===== PHONE (≤640px) — tetap alur & animasi seperti PC ===== */
 @media (max-width: 640px) {
-  /* boleh scroll di mobile, biar konten gak kepotong */
+  /* Viewport dinamis, tanpa scroll agar animasi/translate tetap mulus */
   html, body {
-    height: 100dvh;          /* viewport dinamis, aman di mobile */
-    overflow-y: auto;        /* aktifkan scroll */
+    height: 100dvh;
+    overflow: hidden;                  /* penting: sama seperti desktop */
   }
 
-  /* landing awal */
+  /* Splash (kontener2) tetap center */
   .kontener2 {
     padding: 12px;
     text-align: center;
-    margin-top: 35vh;        /* center lebih stabil di HP */
+    margin-top: calc(50dvh - 64px);    /* center-ish di layar HP */
   }
   .kontener2 h1 { font-size: clamp(1.1rem, 6vw, 1.6rem); }
   .kontener2 .tombol { font-size: 0.95rem; }
 
-  /* container utama */
+  /* Kontainer utama full-viewport, tanpa scroll */
   .kontener {
     padding: 12px;
-    height: auto;
+    height: 100dvh;
   }
 
+  /* Panel dalam mengikuti tinggi layar (kurangi padding luar) */
   .dalemnya_kontener {
-    /* tinggi menyesuaikan layar HP, tapi bisa di-scroll kalau konten lebih panjang */
-    height: calc(100dvh - 24px);
-    min-height: 520px;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 12px;
+    height: calc(100dvh - 24px);       /* 24px = padding atas+pinggir */
+    overflow: hidden;                  /* jaga alur animasi section */
+    padding-bottom: 0;
     border-radius: 12px;
   }
 
-  /* setiap "halaman" tetap bisa animasi, tapi kontennya fleksibel */
+  /* Penting: tetap absolute & full area seperti desktop */
   .dalemnya_halaman {
-    position: relative;               /* biar konten bisa tinggi alami */
-    height: auto;
-    min-height: calc(100dvh - 140px); /* cukup ruang di bawah judul/menu */
-    padding: 12px;
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;                      /* penuhi viewport panel */
+    -webkit-transition: -webkit-transform 0.3s; /* sama seperti PC */
+    padding: 10px 12px;
   }
 
+  /* Judul proporsional, line-height tetap ramping */
   .judul_halaman {
     font-size: clamp(1.1rem, 4.5vw, 1.4rem);
     line-height: 56px;
   }
 
-  /* gambar responsif */
+  /* Tombol menu mudah ditap, tetap di kiri-atas */
+  .tombol_menu {
+    height: 56px;
+    width: 48px;
+    background-size: 36px;             /* tetap icon yang sama */
+  }
+
+  /* Gambar responsif tapi tidak mengubah gaya */
   section .gambar {
     display: block;
     width: 92%;
     max-width: 100%;
     height: auto;
     margin: 0 auto;
-    border-radius: 10px; /* mempertahankan style asal */
+    border-radius: 10px;
   }
 
-  /* tombol menu kiri-atas tetap proporsional & mudah di-tap */
-  .tombol_menu {
-    height: 56px;
-    width: 48px;
-    background-size: 36px;
-  }
-
-  /* teks animasi (efekteks.css) responsif */
+  /* Teks efek (efekteks.css) responsif tanpa ubah look */
   .ml1 {
     margin-top: 15%;
     font-size: clamp(1rem, 5.2vw, 1.4em);
@@ -71,25 +72,12 @@
   }
 }
 
-/* --- TABLET (641–1024px) --- */
+/* ===== TABLET (641–1024px) — tetap alur desktop, ukuran disesuaikan ===== */
 @media (min-width: 641px) and (max-width: 1024px) {
-  .dalemnya_kontener {
-    height: calc(100dvh - 28px);
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  .dalemnya_halaman {
-    position: relative;
-    min-height: calc(100dvh - 150px);
-    padding: 16px;
-  }
-  .judul_halaman {
-    font-size: clamp(1.2rem, 3vw, 1.6rem);
-    line-height: 60px;
-  }
-  section .gambar {
-    width: 88%;
-    max-width: 680px;
-    height: auto;
-  }
+  html, body { height: 100dvh; overflow: hidden; }
+  .kontener { height: 100dvh; padding: 16px; }
+  .dalemnya_kontener { height: calc(100dvh - 32px); overflow: hidden; }
+  .dalemnya_halaman { position: absolute; height: 100%; padding: 14px 16px; }
+  .judul_halaman { font-size: clamp(1.2rem, 3vw, 1.6rem); line-height: 60px; }
+  section .gambar { width: 88%; max-width: 680px; height: auto; }
 }
